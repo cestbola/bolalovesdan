@@ -6,7 +6,7 @@ export default function PinnedItem({ item }: { item: Item }) {
     <div
       data-item-id={item.id}
       data-item-type={item.type}
-      className="mb-6 flex justify-center break-inside-avoid select-none"
+      className="flex justify-center select-none"
       style={{
         transform: `rotate(${item.rotation}deg) scale(${item.scale})`,
         transformOrigin: "center center",
