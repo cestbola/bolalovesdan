@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { VideoWithPosterInput } from '../components/VideoWithPosterInput'
 
 export const pin = defineType({
   name: 'pin',
@@ -63,12 +64,23 @@ export const pin = defineType({
       type: 'file',
       options: { accept: 'video/*' },
       hidden: ({ parent }) => parent?.kind !== 'video',
+      components: {
+        input: VideoWithPosterInput,
+      },
       validation: (r) =>
         r.custom((value, ctx) => {
           const kind = (ctx.parent as { kind?: string } | undefined)?.kind
           if (kind === 'video' && !value) return 'Video is required for video pins'
           return true
         }),
+    }),
+    defineField({
+      name: 'poster',
+      title: 'Poster (auto-generated)',
+      description: 'First frame of the video. Generated automatically on upload.',
+      type: 'image',
+      hidden: ({ parent }) => parent?.kind !== 'video',
+      readOnly: true,
     }),
 
     defineField({

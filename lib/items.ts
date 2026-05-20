@@ -22,6 +22,7 @@ type RawPin = {
     }
   }
   videoUrl?: string
+  posterUrl?: string
   url?: string
   linkTitle?: string
   rotation?: number
@@ -37,6 +38,7 @@ const PINS_QUERY = /* groq */ `
     content,
     image{ alt, asset->{ _id, metadata { dimensions } } },
     "videoUrl": video.asset->url,
+    "posterUrl": poster.asset->url,
     url,
     linkTitle,
     rotation, scale,
@@ -91,7 +93,7 @@ function toItem(p: RawPin): Item | null {
     }
     case 'video':
       if (!p.videoUrl) return null
-      return { ...base, type: 'video', src: p.videoUrl }
+      return { ...base, type: 'video', src: p.videoUrl, poster: p.posterUrl }
     default:
       return null
   }

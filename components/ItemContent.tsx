@@ -78,8 +78,10 @@ export default function ItemContent({
     case "video":
       return (
         <video
-          src={item.src}
+          src={`${item.src}#t=0.1`}
+          poster={item.poster}
           controls={interactive}
+          preload="metadata"
           playsInline
           className="block max-w-[320px] max-h-[320px] shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
         />

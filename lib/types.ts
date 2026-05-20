@@ -28,6 +28,7 @@ export type LinkItem = ItemBase & {
 export type VideoItem = ItemBase & {
   type: 'video'
   src: string
+  poster?: string
 }
 
 export type Item = ImageItem | TextItem | LinkItem | VideoItem
