@@ -9,7 +9,7 @@ export default async function Home() {
     <main className="relative min-h-screen w-full overflow-hidden bg-black">
       <header className="relative z-10 pt-16 pb-8 text-center pointer-events-none">
         <h1
-          className="text-5xl sm:text-6xl tracking-tight text-neutral-100"
+          className="text-xl sm:text-2xl tracking-tight text-neutral-100"
           style={{ fontFamily: "var(--font-serif), serif", fontWeight: 400 }}
         >
           {settings.heading}
