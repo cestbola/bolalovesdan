@@ -10,15 +10,13 @@ export default function ItemContent({
   switch (item.type) {
     case "image":
       return (
-        <div className="bg-neutral-50 p-2 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.5)] ring-1 ring-white/10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={item.src}
-            alt={item.alt}
-            draggable={false}
-            className="block max-w-[260px] max-h-[260px] object-cover pointer-events-none"
-          />
-        </div>
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={item.src}
+          alt={item.alt}
+          draggable={false}
+          className="block max-w-[260px] max-h-[260px] object-contain pointer-events-none shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
+        />
       );
     case "text":
       return (
