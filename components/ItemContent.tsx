@@ -56,14 +56,12 @@ export default function ItemContent({
     }
     case "video":
       return (
-        <div className="bg-neutral-50 p-2 pb-6 shadow-[0_8px_30px_rgb(0,0,0,0.5)] ring-1 ring-white/10">
-          <video
-            src={item.src}
-            controls={interactive}
-            playsInline
-            className="block max-w-[320px] max-h-[320px] pointer-events-none"
-          />
-        </div>
+        <video
+          src={item.src}
+          controls={interactive}
+          playsInline
+          className="block max-w-[320px] max-h-[320px] shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
+        />
       );
   }
 }
