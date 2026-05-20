@@ -24,8 +24,6 @@ type RawPin = {
   videoUrl?: string
   url?: string
   linkTitle?: string
-  x?: number
-  y?: number
   rotation?: number
   scale?: number
   featured?: boolean
@@ -33,7 +31,7 @@ type RawPin = {
 }
 
 const PINS_QUERY = /* groq */ `
-  *[_type == "pin"] | order(featured asc, postedAt asc) {
+  *[_type == "pin"] | order(featured desc, postedAt desc) {
     _id,
     kind,
     content,
@@ -41,7 +39,7 @@ const PINS_QUERY = /* groq */ `
     "videoUrl": video.asset->url,
     url,
     linkTitle,
-    x, y, rotation, scale,
+    rotation, scale,
     featured, postedAt
   }
 `
@@ -55,8 +53,6 @@ const SETTINGS_QUERY = /* groq */ `
 function toItem(p: RawPin): Item | null {
   const base = {
     id: p._id,
-    x: p.x ?? 50,
-    y: p.y ?? 50,
     rotation: p.rotation ?? 0,
     scale: p.scale ?? 1,
     featured: p.featured ?? false,

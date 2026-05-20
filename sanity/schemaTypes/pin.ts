@@ -91,20 +91,6 @@ export const pin = defineType({
     }),
 
     defineField({
-      name: 'x',
-      title: 'X position (%)',
-      type: 'number',
-      initialValue: 50,
-      validation: (r) => r.required().min(0).max(100),
-    }),
-    defineField({
-      name: 'y',
-      title: 'Y position (%)',
-      type: 'number',
-      initialValue: 50,
-      validation: (r) => r.required().min(0).max(100),
-    }),
-    defineField({
       name: 'rotation',
       title: 'Rotation (deg)',
       type: 'number',

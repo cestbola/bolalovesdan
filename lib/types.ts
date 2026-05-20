@@ -1,7 +1,5 @@
 export type ItemBase = {
   id: string
-  x: number
-  y: number
   rotation: number
   scale: number
   featured: boolean
