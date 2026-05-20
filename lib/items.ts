@@ -16,6 +16,7 @@ type RawPin = {
   image?: {
     alt?: string
     asset?: {
+      _id?: string
       _ref?: string
       metadata?: { dimensions?: { width: number; height: number } }
     }
@@ -36,7 +37,7 @@ const PINS_QUERY = /* groq */ `
     _id,
     kind,
     content,
-    image{ alt, asset->{ _ref, _id, metadata { dimensions } } },
+    image{ alt, asset->{ _id, metadata { dimensions } } },
     "videoUrl": video.asset->url,
     url,
     linkTitle,
@@ -75,9 +76,14 @@ function toItem(p: RawPin): Item | null {
         title: p.linkTitle ?? '',
       }
     case 'image': {
-      if (!p.image?.asset?._ref) return null
-      const dims = p.image.asset.metadata?.dimensions
-      const src = urlFor(p.image).width(640).fit('max').auto('format').url()
+      const assetId = p.image?.asset?._id ?? p.image?.asset?._ref
+      if (!assetId) return null
+      const dims = p.image?.asset?.metadata?.dimensions
+      const src = urlFor({ _type: 'image', asset: { _ref: assetId } })
+        .width(640)
+        .fit('max')
+        .auto('format')
+        .url()
       return {
         ...base,
         type: 'image',
