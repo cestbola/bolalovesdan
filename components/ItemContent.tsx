@@ -1,5 +1,22 @@
 import type { Item } from "@/lib/types";
 
+const PIN_COLORS = [
+  "#f5f5f5", // cream
+  "#fbcfe8", // pink
+  "#fde68a", // amber
+  "#bbf7d0", // mint
+  "#bae6fd", // sky
+  "#ddd6fe", // violet
+  "#fda4af", // rose
+  "#fed7aa", // peach
+];
+
+function colorFor(id: string): string {
+  let h = 0;
+  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) | 0;
+  return PIN_COLORS[Math.abs(h) % PIN_COLORS.length];
+}
+
 export default function ItemContent({
   item,
   interactive = true,
@@ -21,8 +38,12 @@ export default function ItemContent({
     case "text":
       return (
         <div
-          className="max-w-[280px] px-4 py-3 text-neutral-100 leading-tight whitespace-pre-wrap"
-          style={{ fontFamily: "var(--font-hand), cursive", fontSize: "1.75rem" }}
+          className="max-w-[280px] px-4 py-3 leading-tight whitespace-pre-wrap"
+          style={{
+            fontFamily: "var(--font-hand), cursive",
+            fontSize: "1.75rem",
+            color: colorFor(item.id),
+          }}
         >
           {item.content}
         </div>

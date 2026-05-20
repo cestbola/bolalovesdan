@@ -109,7 +109,7 @@ export const pin = defineType({
       title: 'Rotation (deg)',
       type: 'number',
       initialValue: 0,
-      validation: (r) => r.required().min(-45).max(45),
+      validation: (r) => r.required().min(-180).max(180),
     }),
     defineField({
       name: 'scale',
