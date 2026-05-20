@@ -88,7 +88,7 @@ function toItem(p: RawPin): Item | null {
         ...base,
         type: 'image',
         src,
-        alt: p.image.alt ?? '',
+        alt: p.image?.alt ?? '',
         width: dims?.width ?? 0,
         height: dims?.height ?? 0,
       }
