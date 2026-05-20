@@ -41,7 +41,7 @@ export default function ItemContent({
           className="max-w-[280px] px-4 py-3 leading-tight whitespace-pre-wrap"
           style={{
             fontFamily: "var(--font-hand), cursive",
-            fontSize: "1.75rem",
+            fontSize: "1.25rem",
             color: colorFor(item.id),
           }}
         >

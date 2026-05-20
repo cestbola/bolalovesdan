@@ -13,12 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 const caveat = Caveat({
-  variable: "--font-caveat",
+  variable: "--font-hand",
   subsets: ["latin"],
 });
 
 const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+  variable: "--font-serif",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
